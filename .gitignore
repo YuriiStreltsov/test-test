@@ -102,3 +102,10 @@ dist
 
 # TernJS port file
 .tern-port
+/.idea/git_toolbox_prj.xml
+/.idea/jsLibraryMappings.xml
+/.idea/workspace.xml
+/.idea/modules.xml
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/test-test.iml
+/.idea/vcs.xml
