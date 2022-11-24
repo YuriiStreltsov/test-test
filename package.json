@@ -42,7 +42,7 @@
   "scripts": {
     "build": "webpack --config configuration/webpack.dev.config.js --mode=development",
     "dev": "webpack serve --config configuration/webpack.dev.config.js --mode=development",
-    "production": "webpack --config configuration/webpack.prod.config.js --mode=production",
+    "prod": "webpack --config configuration/webpack.prod.config.js --mode=production",
     "lint:sass": "sass-lint -v -q",
     "lint:js": "eslint --ext .js src/js/"
   },

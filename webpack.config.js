@@ -22,8 +22,6 @@ const htmlPluginEntries = templateFiles.map((template) => new HTMLWebpackPlugin(
 module.exports = {
   entry: {
     app: path.resolve(environment.paths.source, 'js', 'app.js'),
-    plugin: path.resolve(environment.paths.source, 'js', 'plugin.js'),
-    collect: path.resolve(environment.paths.source, 'js', 'collect.js'),
   },
   output: {
     filename: 'js/[name].js',

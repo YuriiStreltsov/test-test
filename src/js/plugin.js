@@ -5,15 +5,42 @@ async function getUserId() {
     const uids = await resp.json()
     return uids[0]
 }
+const refs ={
+    body: document.querySelector('body'),
+    footer: document.querySelector('footer'),
+    triangleButton: null
+}
 
-// document.addEventListener("DOMContentLoaded", () => {
-//     function addTriangleButton() {
-//         const bodyEl = document.querySelector('body')
-//         const htmlButtonString = '<div class="corner-button">Test button</div>'
-//         const buttonElement = document.createElement('button')
-//         buttonElement.innerHTML = htmlButtonString
-//         bodyEl.appendChild(buttonElement)
-//     }
-//
-//     addTriangleButton()
-// })
+document.addEventListener("DOMContentLoaded", () => {
+    initPlugin()
+})
+
+function initPlugin() {
+    createTriangleButton()
+    implementClickTriangleButton()
+}
+
+function createTriangleButton() {
+    const triangleButton = document.createElement('button')
+    triangleButton.className = 'corner-button'
+    refs.body.appendChild(triangleButton)
+    refs.triangleButton = document.querySelector('.corner-button')
+}
+
+function createAcceptModal() {
+    const modalOverlay = document.createElement('div')
+}
+
+function toggleAcceptModal() {
+
+}
+
+function implementClickTriangleButton() {
+    refs.triangleButton.addEventListener('click', addCollectScript)
+}
+
+function addCollectScript() {
+    const script = document.createElement('script')
+    refs.body.appendChild(script)
+    script.src = 'js/collect.js'
+}

@@ -1,10 +1,12 @@
 .corner-button {
+  cursor: pointer;
+  border: none;
   position: fixed;
   bottom: -50px;
   left: -50px;
   min-width: 100px;
   height: 100px;
-  background-color: red;
+  background-color: #6c47f7;
   z-index: 4;
   transform: rotateZ(45deg);
 }
