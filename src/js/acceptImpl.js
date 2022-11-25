@@ -1,4 +1,5 @@
 import AcceptDialog from "../templates/AcceptDialog/AcceptDialog";
+import {userId} from "./plugin";
 
 const refs ={
     body: document.querySelector('body'),
@@ -11,6 +12,7 @@ const refs ={
 export function createAcceptModal(userId) {
     refs.body.insertAdjacentHTML('beforeend',AcceptDialog)
     refs.acceptModal = document.querySelector('.accept-modal')
+    refs.acceptModal.dataset.userId = userId
     refs.accept = document.querySelector('#accept')
     refs.reject = document.querySelector('#reject')
     refs.reject.addEventListener('click', toggleAcceptModal)
@@ -40,6 +42,7 @@ function enableScroll() {
 }
 
 function addCollectScript() {
+    toggleAcceptModal()
     if(refs.collectScript) {
         return
     }

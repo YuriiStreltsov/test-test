@@ -6,6 +6,7 @@ async function getUserId() {
     const uids = await resp.json()
     return uids[0]
 }
+
 const refs ={
     pluginScript: document.querySelector('script[src="js/plugin.js"]'),
     body: document.querySelector('body'),
@@ -24,8 +25,8 @@ function initPlugin() {
         return
     }
     createTriangleButton()
-    getUserId().then((userId) => {
-        createAcceptModal(userId)
+    getUserId().then((userID) => {
+        createAcceptModal(userID)
         onClickTriangleButton()
     })
 

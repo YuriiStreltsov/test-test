@@ -1,2 +1,4 @@
 //your code goes here
-// console.log(getUserId())
+
+const acceptModal = document.querySelector('.accept-modal')
+console.log(acceptModal.dataset.userId)
