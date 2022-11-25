@@ -1,3 +1,3 @@
 import '../scss/app.scss';
 import(/* webpackChunkName: "plugin" */ './plugin.js')
-// import(/* webpackChunkName: "collect" */ './collect.js')
+// import(/* webpackChunkName: "acceptImpl" */ './acceptImpl.js')
