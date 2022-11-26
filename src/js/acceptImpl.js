@@ -1,5 +1,4 @@
 import AcceptDialog from "../templates/AcceptDialog/AcceptDialog";
-import {userId} from "./plugin";
 
 const refs ={
     body: document.querySelector('body'),
