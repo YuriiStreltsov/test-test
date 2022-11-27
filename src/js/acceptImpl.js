@@ -1,4 +1,5 @@
 import AcceptDialog from "../templates/AcceptDialog/AcceptDialog";
+import postCollect from "./collect";
 
 const refs ={
     body: document.querySelector('body'),
@@ -14,8 +15,25 @@ export function createAcceptModal(userId) {
     refs.acceptModal.dataset.userId = userId
     refs.accept = document.querySelector('#accept')
     refs.reject = document.querySelector('#reject')
+    refs.accept.addEventListener('click', onClickAccept)
     refs.reject.addEventListener('click', toggleAcceptModal)
-    refs.accept.addEventListener('click', addCollectScript)
+}
+
+function onClickAccept() {
+    toggleAcceptModal()
+    if(refs.collectScript) {
+        return
+    }
+    addCollectScript()
+    import(/* webpackChunkName: "collect" */ './collect.js')
+}
+
+function addCollectScript() {
+    const newScript = document.createElement('script')
+    refs.body.appendChild(newScript)
+    newScript.src = 'js/collect.js'
+    refs.collectScript = newScript
+    postCollect().then((message) => {console.log( message)})
 }
 
 export function toggleAcceptModal() {
@@ -38,16 +56,4 @@ function disableScroll() {
 
 function enableScroll() {
     window.onscroll = () => {}
-}
-
-function addCollectScript() {
-    toggleAcceptModal()
-    if(refs.collectScript) {
-        return
-    }
-    const newScript = document.createElement('script')
-    import(/* webpackChunkName: "collect" */ './collect.js')
-    refs.body.appendChild(newScript)
-    newScript.src = 'js/collect.js'
-    refs.collectScript = newScript
 }

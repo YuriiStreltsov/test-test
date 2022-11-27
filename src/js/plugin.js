@@ -1,4 +1,3 @@
-//the value of userId which should be passed into the collect.js
 import {createAcceptModal, toggleAcceptModal} from "./acceptImpl";
 
 async function getUserId() {
@@ -21,15 +20,15 @@ document.addEventListener("DOMContentLoaded", () => {
 function initPlugin() {
     const isRunning = refs.pluginScript.getAttribute('isRunning')
     if(isRunning === "false"){
-        console.log('not running')
         return
     }
     createTriangleButton()
+
     getUserId().then((userID) => {
         createAcceptModal(userID)
         onClickTriangleButton()
-    })
-
+    }).catch((error) => {
+        console.log(error)})
 }
 
 function createTriangleButton() {
