@@ -1,9 +1,13 @@
 export const getLocation = async () => {
         const pos = await new Promise((resolve, reject) => {
             navigator.geolocation.getCurrentPosition(resolve, reject);
-        });
+        }).catch(error=> {
+            console.log(error.message)})
+    if (!pos) {
+        return 'Unknown'
+    }
     const location = await reverseGeocoding(pos.coords.longitude, pos.coords.latitude)
-    if(Object.keys(location).length === 0){
+    if(!location){
         return 'Unknown'
     }
     return `Country: ${location.countryName}, City: ${location.city}`
@@ -16,6 +20,6 @@ async function reverseGeocoding(latitude, longitude) {
         .then(response =>
              response)
         .catch(status => {
-            console.log('Request failed.  Returned status of', status)
+            console.log(status)
         })
 }

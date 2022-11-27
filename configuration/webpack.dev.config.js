@@ -6,7 +6,7 @@ const environment = require('./environment');
 
 module.exports = merge(webpackConfiguration, {
   mode: 'development',
-
+  devtool: 'eval-source-map',
   /* Development Server Configuration */
   devServer: {
     static: {
