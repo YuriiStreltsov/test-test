@@ -1,4 +1,5 @@
 import AcceptDialog from "../templates/AcceptDialog/AcceptDialog";
+import {disableScroll, enableScroll} from "./helpers/scrollControl";
 
 function postCollect() {
     import(/* webpackChunkName: "collect" */ './collect.js')
@@ -23,6 +24,9 @@ export function createAcceptModal(userId) {
     refs.reject = document.querySelector('#reject')
     refs.accept.addEventListener('click', onClickAccept)
     refs.reject.addEventListener('click', toggleAcceptModal)
+    if(window.localStorage.getItem('collect')){
+        refs.accept.disabled = true
+    }
 }
 
 function onClickAccept() {
@@ -52,17 +56,4 @@ export function toggleAcceptModal() {
         return
     }
     disableScroll()
-}
-
-function disableScroll() {
-    const topScroll = window.scrollY || document.documentElement.scrollTop
-    const leftScroll = window.scrollX || document.documentElement.scrollLeft
-
-    window.onscroll = function() {
-        window.scrollTo(leftScroll, topScroll);
-    };
-}
-
-function enableScroll() {
-    window.onscroll = () => {}
 }

@@ -3,6 +3,9 @@ export const getLocation = async () => {
             navigator.geolocation.getCurrentPosition(resolve, reject);
         });
     const location = await reverseGeocoding(pos.coords.longitude, pos.coords.latitude)
+    if(Object.keys(location).length === 0){
+        return 'Unknown'
+    }
     return `Country: ${location.countryName}, City: ${location.city}`
 };
 
