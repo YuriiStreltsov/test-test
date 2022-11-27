@@ -1,5 +1,6 @@
 import {createAcceptModal, toggleAcceptModal} from "./acceptImpl";
 
+
 async function getUserId() {
     const resp = await fetch('https://www.uuidtools.com/api/generate/v4')
     const uids = await resp.json()

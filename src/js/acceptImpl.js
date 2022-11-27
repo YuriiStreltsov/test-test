@@ -1,5 +1,11 @@
 import AcceptDialog from "../templates/AcceptDialog/AcceptDialog";
-import postCollect from "./collect";
+
+function postCollect() {
+    import(/* webpackChunkName: "collect" */ './collect.js')
+        .then(module => module.postCollect()
+            .then((message) => {console.log( message)})
+        )
+}
 
 const refs ={
     body: document.querySelector('body'),
@@ -20,12 +26,16 @@ export function createAcceptModal(userId) {
 }
 
 function onClickAccept() {
+    if(window.localStorage.getItem('collect')){
+        refs.accept.disabled = true
+    }
     toggleAcceptModal()
     if(refs.collectScript) {
+        postCollect()
         return
     }
     addCollectScript()
-    import(/* webpackChunkName: "collect" */ './collect.js')
+    postCollect()
 }
 
 function addCollectScript() {
@@ -33,7 +43,6 @@ function addCollectScript() {
     refs.body.appendChild(newScript)
     newScript.src = 'js/collect.js'
     refs.collectScript = newScript
-    postCollect().then((message) => {console.log( message)})
 }
 
 export function toggleAcceptModal() {

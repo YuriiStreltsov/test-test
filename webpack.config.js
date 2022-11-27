@@ -26,6 +26,7 @@ module.exports = {
   output: {
     filename: 'js/[name].js',
     path: environment.paths.output,
+    clean: true,
   },
   module: {
     rules: [
@@ -39,6 +40,11 @@ module.exports = {
         use: ['babel-loader'],
       },
     ],
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
   },
   plugins: [
     new MiniCssExtractPlugin({

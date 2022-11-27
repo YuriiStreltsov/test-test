@@ -17,7 +17,6 @@ module.exports = merge(webpackConfiguration, {
     client: {
       overlay: true,
     },
-    open: true,
     compress: true,
     hot: false,
     ...environment.server,
