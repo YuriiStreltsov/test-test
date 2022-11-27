@@ -30,11 +30,9 @@ export function createAcceptModal(userId) {
 }
 
 function onClickAccept() {
-    if(window.localStorage.getItem('collect')){
-        refs.accept.disabled = true
-    }
     toggleAcceptModal()
     if(refs.collectScript) {
+        refs.accept.disabled = true
         postCollect()
         return
     }
@@ -50,6 +48,9 @@ function addCollectScript() {
 }
 
 export function toggleAcceptModal() {
+    if(window.localStorage.getItem('collect')){
+        refs.accept.disabled = true
+    }
     refs.acceptModal.classList.toggle('hidden')
     if(refs.acceptModal.classList.contains('hidden')){
         enableScroll()
